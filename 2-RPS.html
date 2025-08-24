@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: arial;
+    }
+
+    .js-button {
+      border: none;
+      padding: 10px 15px;
+      font-weight: bold;
+      background-color: black;
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-bottom: 20px; 
+    }
+
+    .js-sub {
+      background-color: rgb(216, 216, 216);
+      color: black;
+    }
+    .click{
+       font-size: 15px;
+       padding: 10px 20px;
+       background-color: green;
+       color: white;
+       border: none;
+    }
+    .text{
+      font-size: 15px ;
+      padding: 8px 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Youtube Subscription</p>
+  <button class="js-button" onclick="
+  SubscribeOf()
+  ">Subscribe</button>
+
+  <p>Amazon Shipping Company</p>
+  <input placeholder="cost of order" onkeydown="
+  
+     if (event.key === 'Enter') {
+         inputButton()
+     } 
+  " class="text">
+  <button class="click" onclick="
+     inputButton()
+  ">calculate</button>
+  <p class="input-text"></p>
+</body>
+<script>
+  let subElement = document.querySelector('.js-button');
+  function SubscribeOf() {
+
+    if (subElement.innerText === 'Subscribe') {
+      subElement.innerHTML = 'Subscribed';
+      subElement.classList.add('js-sub');
+    } else {
+      subElement.innerHTML = 'Subscribe';
+      subElement.classList.remove('js-sub');
+    }
+
+  }
+  function inputButton() {
+    inputElement = document.querySelector('.text')
+      let cost = Number( inputElement.value)
+      if (cost < 40) {
+         cost = cost + 10;
+      }
+     let calculate = document.querySelector('.input-text')
+     .innerHTML = ` $${cost}` ;
+    
+  }
+
+</script>
+
+</html>

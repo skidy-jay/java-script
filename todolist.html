@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name ="viewport" content ="width=device-width, initial-scale=1.0">
+  <title>Todolist</title>
+  <style>
+    body{
+      font-family: Arial;
+      font-weight: bold;
+    }
+    .todolist{
+      font-size: 15px;
+      padding: 10px 10px;
+      font-weight: bold;
+    }
+    .js-date-input{
+      font-size: 15px;
+      padding: 9px 10px 8px 10px;
+      font-weight: bold;
+    }
+    .add{
+      font-size: 15px;
+      padding: 12px 30px;
+      background-color: green;
+      color: white;
+      border: none;
+    }
+    .add-date{
+      margin-left: 135px;
+      margin-right: 55px;
+    }
+    .js-delete{
+      background-color: red;
+      color: white;
+      font-size: 15px;
+      padding: 12px 22px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <p>Daily Todolist</p>
+  <input type="text" placeholder="Todo-name" class="todolist">
+  <input type="date" class="js-date-input">
+  <button class="add" onclick="
+    addTodo()
+  ">Add</button>
+  <div class="js-input"></div>
+</body>
+<script>
+  let todoList = [{ name : 'make money',
+  addDate : '2025-25-12'
+  }];
+    lopeTodo()
+  function lopeTodo() {
+    let addition = '';
+    for (let index = 0; index < todoList.length; index++) {
+      const element = todoList[index];
+      const name = element.name ;
+      const addDate = element.addDate ;
+      let html = `
+      <p> 
+       <span class=""> ${name} </span> <span class="add-date">${addDate}</span>
+        <button class="js-delete" onclick ="
+       console.log(todoList.splice( ${index}, 1)) 
+        lopeTodo()
+        ">Delete</button>
+     </p>`;
+      addition += html
+    }
+    console.log(addition)
+     document.querySelector('.js-input').innerHTML = addition
+  }
+  
+
+  function addTodo(){
+    let todo = document.querySelector('.todolist');
+    let name= todo.value;
+    let date = document.querySelector('.js-date-input')
+    let addDate = date.value;
+    todoList.push({name : name
+      ,addDate : addDate});
+    console.log(todoList);
+    
+     date.value = '' ;
+     todo.value = '';
+     lopeTodo()
+  }
+</script>
+</html>
